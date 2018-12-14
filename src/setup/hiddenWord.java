@@ -8,9 +8,17 @@ public class hiddenWord {
     public static String getHint(String guess) {
         String hint = "";
         for(int i = 0;i<hidden.length();i++) {
-            if (guess.substring(i,i+1) == hidden.substring(i,i+1)) {
-                hint+= hidden.substring(i,i+1);
+            if (guess.substring(i, i + 1).equals(hidden.substring(i, i + 1))) {
+                hint+= guess.substring(i,i+1);
+            }
+            else if (hidden.indexOf(guess.substring(i,i+1))>=0) {
+                hint+="+";
+            }
+            else {
+                hint+="*";
             }
         }
+        return hint;
     }
+
 }
